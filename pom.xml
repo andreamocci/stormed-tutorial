@@ -9,8 +9,8 @@
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<encoding>UTF-8</encoding>
-		<scala.version>2.11.8</scala.version>
-		<scala.version.short>_2.11</scala.version.short>
+		<scala.version>2.12.1</scala.version>
+		<scala.version.short>_2.12</scala.version.short>
 	</properties>
 
 
@@ -36,13 +36,13 @@
 		<dependency>
 			<groupId>org.scalaj</groupId>
 			<artifactId>scalaj-http${scala.version.short}</artifactId>
-			<version>2.0.0</version>
+			<version>2.3.0</version>
 		</dependency>
 
 		<dependency>
 			<groupId>ch.usi.inf.reveal.parsing</groupId>
 			<artifactId>stormed-devkit</artifactId>
-			<version>1.9.4</version>
+			<version>1.9.6</version>
 		</dependency>
 
 
@@ -53,17 +53,7 @@
 			<scope>test</scope>
 		</dependency>
 
-		<dependency>
-			<groupId>org.scalanlp</groupId>
-			<artifactId>breeze_2.11</artifactId>
-			<version>0.12</version>
-		</dependency>
 
-		<dependency>
-			<groupId>com.signalcollect</groupId>
-			<artifactId>signal-collect_2.11</artifactId>
-			<version>8.0.6</version>
-		</dependency>
 
 	</dependencies>
 

@@ -2,7 +2,7 @@ package tutorial
 
 object TutorialData {
   /* Insert the key as received from the service registration email */
-  val key = ???
+  val key = "B6560B8C2E9538D03ECFF87F588E2DDE9254631528B88E5BDE9E2B43D1868538"
 }
 
 object Utils {

@@ -65,8 +65,6 @@ object Tutorial3 extends App {
   
   val result = StormedService.parse(textToParse,TutorialData.key)
   
-  //  Utils.write(StormedService.parseAsJson(textToParse, TutorialData.key),"output.json")
-  
   result match {
     case ParsingResponse(result, quota, status) =>
       println(s"Status: $status")
@@ -74,7 +72,6 @@ object Tutorial3 extends App {
       
       result.foreach { node =>
         println(node.getClass.getSimpleName)
-        //println(node)
       }
       
       println("Parsing Result written.")

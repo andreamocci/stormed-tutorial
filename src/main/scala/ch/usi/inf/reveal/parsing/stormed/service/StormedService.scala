@@ -58,6 +58,7 @@ object StormedService {
   def parse(text: String, key: String): Response = {
     val request = ParsingRequest(text, key)
     val response = doRestRequest("parse", request)
+    println(response)
     hasError(response) match {
       case Some(error) => error
       case None => read[ParsingResponse](response) 

@@ -1,9 +1,10 @@
 package tutorial
 
 import ch.usi.inf.reveal.parsing.stormed.service._
-
+import scala.collection.mutable.LinkedHashSet
 
 object Tutorial1 extends App {
+
   
   // from http://stackoverflow.com/questions/886955/breaking-out-of-nested-loops-in-java
   val textToParse = """
@@ -85,3 +86,34 @@ object Tutorial1 extends App {
       println(status + ": " + message)
   }
 }
+
+object Tutorial0 extends App {
+  
+  val textToParse = """public class Foo<T> { 
+    String[] foo; 
+    public Integer bar() {}; 
+    class Bar {} 
+    class Alice<T,U> {
+      String mirror = null;  
+    }
+    Foo<Bar> fooBar;
+    int[] intArray;
+    }""".trim
+  
+  val result = StormedService.parse(textToParse,TutorialData.key)
+  
+  result match {
+    case ParsingResponse(result, quota, status) =>
+      println(s"Status: $status")
+      println(s"Quota Remaining: $quota")
+      println(result)
+      println("Parsing Result written.")
+      
+    case ErrorResponse(message, status) =>
+      println(status + ": " + message)
+  }
+}
+
+
+
+
