@@ -9,21 +9,17 @@
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<encoding>UTF-8</encoding>
-		<scala.version>2.12.1</scala.version>
+		<scala.version>2.12.3</scala.version>
 		<scala.version.short>_2.12</scala.version.short>
 	</properties>
 
 
 	<repositories>
 		<repository>
-			<id>stormed</id>
-			<name>StORMeD Dev-Kit Repository</name>
-			<url>http://stormed.inf.usi.ch/releases/</url>
-			<layout>default</layout>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-		</repository>
+	    <id>stormed</id>
+	    <name>StORMeD Dev-Kit Repository</name>
+	    <url>https://anonymous:anonymous@stormed.inf.usi.ch/releases/</url>
+    </repository>
 	</repositories>
 
 	<dependencies>
@@ -40,13 +36,12 @@
 		</dependency>
 
 		<dependency>
-			<groupId>ch.usi.inf.reveal.parsing</groupId>
-			<artifactId>stormed-devkit</artifactId>
-			<version>1.9.6</version>
-		</dependency>
+	    <groupId>ch.usi.inf.reveal.parsing</groupId>
+	    <artifactId>stormed-devkit_2.12</artifactId>
+	    <version>2.0.0</version>
+    </dependency>
 
-
-		<dependency>
+	  <dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>4.4</version>
