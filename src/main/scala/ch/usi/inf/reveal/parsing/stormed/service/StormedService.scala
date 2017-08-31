@@ -7,6 +7,7 @@ import javax.net.ssl._
 import scalaj.http.Http
 import java.security.SecureRandom
 import org.json4s.JsonAST.JObject
+import ch.usi.inf.reveal.parsing.model.HASTNode
 
 object StormedService {
   implicit val formats = ArtifactSerializer.formats  
@@ -58,18 +59,23 @@ object StormedService {
   def parse(text: String, key: String): Response = {
     val request = ParsingRequest(text, key)
     val response = doRestRequest("parse", request)
-    println(response)
+    // println(response)
     hasError(response) match {
       case Some(error) => error
       case None => read[ParsingResponse](response) 
     }
   }
   
+  def parseOption(text: String, key: String): Option[Seq[HASTNode]] = 
+    parse(text, key) match {
+      case ParsingResponse(result, quota, status) => Some(result)
+      case _ => None
+    }
+  
   def parseAsJson(text: String, key: String): String = {
     val request = ParsingRequest(text, key)
     doRestRequest("parse", request)
   }
-  
   
   def tag(text: String, isTagged: Boolean, key: String): Response = {
     val request = TaggingRequest(text, isTagged, key)

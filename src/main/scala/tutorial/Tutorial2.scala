@@ -11,8 +11,6 @@ object Tutorial2 extends App {
     
     public static void main(int args[])
     
-    日本はすごいです。
-    
     Is this a valid declaration?
     
     fooMethod(int a)
@@ -42,25 +40,16 @@ object Tutorial2 extends App {
             
     """.trim
   
-  val result = StormedService.parse(textToParse,TutorialData.key)
-  
+  val result = StormedService.parseOption(textToParse,TutorialData.key)
   Utils.write(StormedService.parseAsJson(textToParse, TutorialData.key), "output.json")
   
-  result match {
-    case ParsingResponse(result, quota, status) =>
-      println(s"Status: $status")
-      println(s"Quota Remaining: $quota")
-      
-      val allTextFragments = result.filter { fragment => fragment.isInstanceOf[TextFragmentNode] }
+  result foreach { seq =>
+      val allTextFragments = seq.filter { fragment => fragment.isInstanceOf[TextFragmentNode] }
       
       allTextFragments.foreach { node =>
-        println(node.asInstanceOf[TextFragmentNode].text.trim)
+        println(node.toCode)
+        
         //println(node)
-      }
-      
-      println("Parsing Result written.")
-      
-    case ErrorResponse(message, status) =>
-      println(status + ": " + message)
+      }      
   }
 }

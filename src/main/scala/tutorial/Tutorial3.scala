@@ -63,20 +63,11 @@ object Tutorial3 extends App {
     
     """.trim
   
-  val result = StormedService.parse(textToParse,TutorialData.key)
+  val resultOption = StormedService.parseOption(textToParse,TutorialData.key)
   
-  result match {
-    case ParsingResponse(result, quota, status) =>
-      println(s"Status: $status")
-      println(s"Quota Remaining: $quota")
-      
-      result.foreach { node =>
+  resultOption foreach { nodes =>      
+      nodes.foreach { node =>
         println(node.getClass.getSimpleName)
       }
-      
-      println("Parsing Result written.")
-      
-    case ErrorResponse(message, status) =>
-      println(status + ": " + message)
   }
 }
